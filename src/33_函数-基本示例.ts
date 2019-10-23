@@ -14,7 +14,7 @@ const add3 = (x: number, y: number): number => {
 }
 
 // 箭头函数，等号左侧为函数类型；等号右侧的实现部分参数、返回值类型会自动推断出来
-// ! 注意在非type、interface中定义函数类型时，返回值类型前面符号是=>
+// ! 注意在非type、interface中(包含在class中定义方法类型)定义函数类型时，返回值类型前面符号是=>
 const add4: (num: number, otherNum: number) => number = (x, y) => x + y
 
 // 完整的函数类型
