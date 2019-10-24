@@ -27,3 +27,36 @@ console.log(c3) // 4
 //     Color[Color["Green"] = 1] = "Green";
 //     Color[Color["Blue"] = 2] = "Blue";
 // })(Color || (Color = {}));
+
+// 常量枚举
+// 使用常量枚举能获得一定的性能提升
+
+// 普通枚举
+enum Tristate {
+  False,
+  True,
+  Unknown
+}
+
+const lie = Tristate.False
+// 其编译后为
+// var Tristate;
+// (function (Tristate) {
+//     Tristate[Tristate["False"] = 0] = "False";
+//     Tristate[Tristate["True"] = 1] = "True";
+//     Tristate[Tristate["Unknown"] = 2] = "Unknown";
+// })(Tristate || (Tristate = {}));
+// var lie = Tristate.False;
+
+// 而使用常量枚举后
+const enum Tristate2 {
+  False,
+  True,
+  Unknown
+}
+
+const lie2 = Tristate2.False
+
+// 其编译后，不携带Tristate2
+// 因为其知道Tristate2不会再改变，所以可以在编译时固话下来
+// var lie2 = 0 /* False */;
